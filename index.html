@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theo Bui</title>
+    <meta name="description" content="Engineer. French-American, based in San Francisco. CTO at 8x Social.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
+            background: #0c0c0c;
+            color: #b8b8b8;
+            line-height: 1.7;
+            padding: 0 24px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        main {
+            max-width: 560px;
+            margin: 0 auto;
+            padding: 120px 0 100px;
+        }
+
+        h1 {
+            font-size: 1.05em;
+            font-weight: 500;
+            color: #e8e8e8;
+        }
+
+        .sub {
+            color: #666;
+            font-size: 0.85em;
+            margin-top: 3px;
+        }
+
+        .links {
+            display: flex;
+            gap: 1.2em;
+            margin-top: 12px;
+            font-size: 0.8em;
+        }
+
+        .links a {
+            color: #555;
+            text-decoration: none;
+            transition: color 0.2s;
+            border: none;
+        }
+
+        .links a:hover { color: #e8e8e8; }
+
+        .blurb {
+            margin-top: 36px;
+            font-size: 0.9em;
+        }
+
+        a {
+            color: #e8e8e8;
+            text-decoration: none;
+            border-bottom: 1px solid #2e2e2e;
+            transition: border-color 0.2s;
+        }
+
+        a:hover { border-color: #e8e8e8; }
+
+        .projects {
+            margin-top: 40px;
+            list-style: none;
+            font-size: 0.88em;
+        }
+
+        .projects li {
+            padding: 7px 0;
+            color: #888;
+        }
+
+        .projects .name {
+            color: #ccc;
+        }
+
+        .writing {
+            margin-top: 40px;
+            list-style: none;
+            font-size: 0.88em;
+        }
+
+        .writing li {
+            padding: 6px 0;
+        }
+
+        .writing .date {
+            color: #444;
+            font-size: 0.82em;
+            margin-left: 4px;
+        }
+
+        @media (max-width: 600px) {
+            main { padding: 80px 0 60px; }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Theo Bui</h1>
+        <div class="sub">Engineer, San Francisco</div>
+        <div class="links">
+            <a href="mailto:theo@8x.social">Email</a>
+            <a href="https://www.linkedin.com/in/theo-bui/">LinkedIn</a>
+            <a href="https://github.com/bigowash">GitHub</a>
+            <a href="https://x.com/theohbui">X</a>
+        </div>
+
+        <p class="blurb">French-American. CTO at <a href="https://8x.social">8x Social</a>. Previously co-founded a ride-sharing marketplace, shipped ML pipelines at <a href="https://web.meetcleo.com">Cleo</a>. Design Engineering at Imperial College London, Dean's List.</p>
+
+        <ul class="projects">
+            <li><span class="name">8x Social</span> — creator ops platform, 2,000+ creators, 30+ countries</li>
+            <li><span class="name">Trippl</span> — ride-sharing marketplace, team of 7</li>
+            <li><span class="name">Cleo</span> — ML pipelines, millions of transactions</li>
+            <li><span class="name">FentaGone</span> — fentanyl detection, pharmacy app</li>
+            <li><span class="name">CNN from scratch</span> — in Java, no libraries</li>
+            <li><span class="name">Robotic arm</span> — face-tracking, inverse kinematics, C++</li>
+            <li><span class="name">Self-balancing segway</span> — PID control, beat detection</li>
+        </ul>
+
+        <ul class="writing">
+            <li><a href="blog/san-francisco.html">First Week in San Francisco</a><span class="date">Feb 2026</span></li>
+            <li><a href="blog/distribution-moat.html">Distribution Is the Only Moat Left</a><span class="date">Feb 2026</span></li>
+            <li><a href="blog/closing-trippl.html">Closing a Chapter: Two Years of Trippl</a><span class="date">Feb 2026</span></li>
+        </ul>
+    </main>
+</body>
+</html>
