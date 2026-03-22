@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Theo Bui</title>
-    <meta name="description" content="Engineer. French-American, based in San Francisco. CTO at 8x Social.">
+    <meta name="description" content="Engineer. French-American, based in San Francisco. CTO at 8x.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -13,167 +13,277 @@
             background: #0c0c0c;
             color: #b8b8b8;
             line-height: 1.7;
-            padding: 0 24px;
             -webkit-font-smoothing: antialiased;
         }
 
-        main {
-            max-width: 560px;
+        /* ── LANDING ── */
+        #landing {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 40px;
+            max-width: 640px;
             margin: 0 auto;
-            padding: 120px 0 100px;
         }
 
         h1 {
-            font-size: 1.05em;
+            font-size: 1.1em;
             font-weight: 500;
             color: #e8e8e8;
+            letter-spacing: -0.01em;
         }
 
         .sub {
-            color: #666;
-            font-size: 0.85em;
-            margin-top: 3px;
-        }
-
-        .links {
-            display: flex;
-            gap: 1.2em;
-            margin-top: 12px;
-            font-size: 0.8em;
-            flex-wrap: wrap;
-        }
-
-        .links a {
             color: #555;
-            text-decoration: none;
-            transition: color 0.2s;
-            border: none;
+            font-size: 0.82em;
+            margin-top: 4px;
         }
 
-        .links a:hover { color: #e8e8e8; }
-
-        .blurb {
-            margin-top: 36px;
-            font-size: 0.9em;
+        .bio {
+            margin-top: 28px;
+            font-size: 0.88em;
+            color: #999;
+            max-width: 440px;
         }
 
-        a {
-            color: #e8e8e8;
+        .bio a {
+            color: #ccc;
             text-decoration: none;
-            border-bottom: 1px solid #2e2e2e;
+            border-bottom: 1px solid #2a2a2a;
             transition: border-color 0.2s;
         }
 
-        a:hover { border-color: #e8e8e8; }
+        .bio a:hover { border-color: #ccc; }
 
+        .nav {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .nav a {
+            font-size: 0.85em;
+            color: #555;
+            text-decoration: none;
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.15s;
+            border: none;
+        }
+
+        .nav a:hover { color: #e8e8e8; }
+
+        .nav a .arrow { color: #2e2e2e; transition: color 0.15s; font-size: 0.9em; }
+        .nav a:hover .arrow { color: #666; }
+
+        .socials {
+            margin-top: 48px;
+            display: flex;
+            gap: 1.4em;
+            font-size: 0.78em;
+        }
+
+        .socials a {
+            color: #3a3a3a;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .socials a:hover { color: #888; }
+
+        /* ── SECTIONS ── */
         .section {
-            margin-top: 44px;
+            display: none;
+            min-height: 100vh;
+            padding: 80px 40px 100px;
+            max-width: 640px;
+            margin: 0 auto;
         }
 
-        .section-label {
-            font-size: 0.72em;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
+        .section.active { display: block; }
+
+        .back {
+            font-size: 0.78em;
             color: #444;
-            margin-bottom: 14px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 48px;
+            transition: color 0.2s;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
         }
 
-        .projects {
+        .back:hover { color: #999; }
+
+        .section h2 {
+            font-size: 0.95em;
+            font-weight: 500;
+            color: #e8e8e8;
+            margin-bottom: 28px;
+        }
+
+        .items {
             list-style: none;
-            font-size: 0.88em;
         }
 
-        .projects li {
-            padding: 7px 0;
-            color: #888;
-            border-bottom: 1px solid #161616;
+        .items li {
+            padding: 14px 0;
+            border-bottom: 1px solid #141414;
         }
 
-        .projects li:last-child { border-bottom: none; }
+        .items li:last-child { border-bottom: none; }
 
-        .projects .name {
+        .items .name {
+            font-size: 0.9em;
             color: #ccc;
         }
 
-        .projects .meta {
-            font-size: 0.85em;
+        .items .name a {
+            color: #ccc;
+            text-decoration: none;
+            border-bottom: 1px solid #2a2a2a;
+            transition: border-color 0.2s;
+        }
+
+        .items .name a:hover { border-color: #ccc; }
+
+        .items .desc {
+            font-size: 0.82em;
             color: #555;
-            margin-top: 2px;
+            margin-top: 3px;
+            line-height: 1.6;
+        }
+
+        .items .tag {
+            display: inline-block;
+            font-size: 0.7em;
+            color: #3a3a3a;
+            margin-top: 6px;
         }
 
         @media (max-width: 600px) {
-            main { padding: 80px 0 60px; }
+            #landing { padding: 0 24px; }
+            .section { padding: 60px 24px 80px; }
         }
     </style>
 </head>
 <body>
-    <main>
-        <h1>Theo Bui</h1>
-        <div class="sub">Engineer, San Francisco</div>
-        <div class="links">
-            <a href="mailto:theo@8x.social">Email</a>
-            <a href="https://www.linkedin.com/in/theo-bui/">LinkedIn</a>
-            <a href="https://github.com/bigowash">GitHub</a>
-            <a href="https://x.com/theohbui">X</a>
-            <a href="/portfolio">Portfolio</a>
-        </div>
 
-        <p class="blurb">French-American. CTO & co-founder at <a href="https://8x.social">8x</a> — a UGC creator marketplace that became the fastest growing company in Entrepreneurs First's history. $300K ARR in 2 months, 2,000+ creators across 30+ countries. Previously ML Engineer at <a href="https://web.meetcleo.com">Cleo</a> and co-founder of Trippl. MEng Design Engineering, Imperial College London, 1st Class + Dean's List.</p>
+<div id="landing">
+    <h1>Theo Bui</h1>
+    <div class="sub">Engineer · San Francisco</div>
 
-        <div class="section">
-            <div class="section-label">Now</div>
-            <ul class="projects">
-                <li>
-                    <span class="name"><a href="https://8x.social">8x Social</a></span>
-                    <div class="meta">UGC creator marketplace — $300K ARR, 2,000+ creators, 30 countries. Fastest growing company in EF history.</div>
-                </li>
-            </ul>
-        </div>
+    <p class="bio">
+        French-American. CTO & co-founder at <a href="https://8x.social" target="_blank">8x</a>.
+        MEng Design Engineering, Imperial College London.
+    </p>
 
-        <div class="section">
-            <div class="section-label">Previously</div>
-            <ul class="projects">
-                <li>
-                    <span class="name"><a href="https://web.meetcleo.com">Cleo</a></span>
-                    <div class="meta">ML Engineer — youngest hire. 5 squads in 14 months: full-stack → ML. Built notification optimization and transaction categorization at scale.</div>
-                </li>
-                <li>
-                    <span class="name">Trippl</span>
-                    <div class="meta">Co-founder & CTO — ride-sharing marketplace, team of 7, iOS + Android. Two years.</div>
-                </li>
-                <li>
-                    <span class="name">Derivatas</span>
-                    <div class="meta">Data analysis on 10,000+ VC valuations. Built insights on round sizes, timing, and investor preferences — a product line nobody else had.</div>
-                </li>
-            </ul>
-        </div>
+    <nav class="nav">
+        <a href="#" onclick="show('work')">
+            <span class="arrow">→</span> Work
+        </a>
+        <a href="#" onclick="show('projects')">
+            <span class="arrow">→</span> Projects
+        </a>
+        <a href="/portfolio">
+            <span class="arrow">→</span> Portfolio
+        </a>
+    </nav>
 
-        <div class="section">
-            <div class="section-label">Projects</div>
-            <ul class="projects">
-                <li>
-                    <span class="name">Contactless lock</span>
-                    <div class="meta">Every touchpoint in a public bathroom is going contactless — except the lock. Built one.</div>
-                </li>
-                <li>
-                    <span class="name">Pedestrian dynamics robots</span>
-                    <div class="meta">GWU Transportation Lab — simulated crowd behavior using the Social Force Model, then built LIDAR robots to validate it physically.</div>
-                </li>
-                <li>
-                    <span class="name">CNN from scratch</span>
-                    <div class="meta">Java. No libraries.</div>
-                </li>
-                <li>
-                    <span class="name">Robotic arm</span>
-                    <div class="meta">Face-tracking, 5-axis, inverse kinematics. Only tracked my face.</div>
-                </li>
-                <li>
-                    <span class="name">Self-balancing segway</span>
-                    <div class="meta">PID control + beat detection. It danced.</div>
-                </li>
-            </ul>
-        </div>
+    <div class="socials">
+        <a href="mailto:theo@8x.social">Email</a>
+        <a href="https://x.com/theohbui" target="_blank">X</a>
+        <a href="https://www.linkedin.com/in/theo-bui/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/bigowash" target="_blank">GitHub</a>
+    </div>
+</div>
 
-    </main>
+<!-- WORK -->
+<div id="work" class="section">
+    <button class="back" onclick="show('landing')">← back</button>
+    <h2>Work</h2>
+    <ul class="items">
+        <li>
+            <div class="name"><a href="https://8x.social" target="_blank">8x Social</a></div>
+            <div class="desc">Co-founder & CTO. UGC creator marketplace — ~$1M ARR, 2,000+ creators across 30 countries. Fastest growing company in Entrepreneurs First's history.</div>
+            <div class="tag">2026 — present</div>
+        </li>
+        <li>
+            <div class="name"><a href="https://web.meetcleo.com" target="_blank">Cleo</a></div>
+            <div class="desc">ML Engineer. Youngest hire. Rotated through 5 squads in 14 months — full-stack to machine learning. Built notification optimization and LLM-based transaction categorization at the core of the product.</div>
+            <div class="tag">2024 — 2025</div>
+        </li>
+        <li>
+            <div class="name">Trippl</div>
+            <div class="desc">Co-founder & CTO. Ride-sharing marketplace for safer, shared travel. Team of 7. Built iOS + Android from scratch. Two years.</div>
+            <div class="tag">2023 — 2025</div>
+        </li>
+        <li>
+            <div class="name">Derivatas</div>
+            <div class="desc">Analysed 10,000+ VC valuations to surface patterns in round sizes, timing, and investor preferences. A dataset nobody else had access to.</div>
+            <div class="tag">2021 — 2022</div>
+        </li>
+        <li>
+            <div class="name">GWU Transportation Lab</div>
+            <div class="desc">Modelled pedestrian crowd dynamics using the Social Force Model. Simulated agents in a virtual environment, then built physical robots with LIDAR sensors to validate the results. They matched.</div>
+            <div class="tag">2018</div>
+        </li>
+    </ul>
+</div>
+
+<!-- PROJECTS -->
+<div id="projects" class="section">
+    <button class="back" onclick="show('landing')">← back</button>
+    <h2>Projects</h2>
+    <ul class="items">
+        <li>
+            <div class="name">Contactless lock</div>
+            <div class="desc">Every touchpoint in a public bathroom is going contactless — taps, flushes, hand dryers. Except the lock. Built one.</div>
+        </li>
+        <li>
+            <div class="name">Robotic arm</div>
+            <div class="desc">5-axis face-tracking arm built from 3mm plywood. ESP32 camera for facial detection, servo + stepper motors for movement, inverse kinematics. It only tracked my face.</div>
+        </li>
+        <li>
+            <div class="name">Self-balancing segway</div>
+            <div class="desc">PID control. Beat detection. It danced.</div>
+        </li>
+        <li>
+            <div class="name">CNN from scratch</div>
+            <div class="desc">Convolutional neural network rebuilt from fundamentals in Java. No external libraries. Trained on MNIST.</div>
+        </li>
+        <li>
+            <div class="name">Chess engine</div>
+            <div class="desc">Object-oriented chess in Python. Built during COVID — first proper introduction to software architecture.</div>
+        </li>
+        <li>
+            <div class="name">Sudoku solver</div>
+            <div class="desc">Constraint propagation + backtracking. Solves any valid puzzle.</div>
+        </li>
+    </ul>
+</div>
+
+<script>
+    function show(id) {
+        document.getElementById('landing').style.display = 'none';
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        if (id === 'landing') {
+            document.getElementById('landing').style.display = 'flex';
+        } else {
+            document.getElementById(id).classList.add('active');
+        }
+        window.scrollTo(0, 0);
+        return false;
+    }
+</script>
+
 </body>
 </html>
