@@ -40,6 +40,7 @@
             gap: 1.2em;
             margin-top: 12px;
             font-size: 0.8em;
+            flex-wrap: wrap;
         }
 
         .links a {
@@ -65,8 +66,19 @@
 
         a:hover { border-color: #e8e8e8; }
 
+        .section {
+            margin-top: 44px;
+        }
+
+        .section-label {
+            font-size: 0.72em;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #444;
+            margin-bottom: 14px;
+        }
+
         .projects {
-            margin-top: 40px;
             list-style: none;
             font-size: 0.88em;
         }
@@ -74,10 +86,19 @@
         .projects li {
             padding: 7px 0;
             color: #888;
+            border-bottom: 1px solid #161616;
         }
+
+        .projects li:last-child { border-bottom: none; }
 
         .projects .name {
             color: #ccc;
+        }
+
+        .projects .meta {
+            font-size: 0.85em;
+            color: #555;
+            margin-top: 2px;
         }
 
         @media (max-width: 600px) {
@@ -97,17 +118,61 @@
             <a href="/portfolio">Portfolio</a>
         </div>
 
-        <p class="blurb">French-American. CTO at <a href="https://8x.social">8x Social</a>. Previously co-founded a ride-sharing marketplace, shipped ML pipelines at <a href="https://web.meetcleo.com">Cleo</a>. Design Engineering at Imperial College London, Dean's List.</p>
+        <p class="blurb">French-American. CTO & co-founder at <a href="https://8x.social">8x</a> — a UGC creator marketplace that became the fastest growing company in Entrepreneurs First's history. $300K ARR in 2 months, 2,000+ creators across 30+ countries. Previously ML Engineer at <a href="https://web.meetcleo.com">Cleo</a> and co-founder of Trippl. MEng Design Engineering, Imperial College London, 1st Class + Dean's List.</p>
 
-        <ul class="projects">
-            <li><span class="name">8x Social</span> — creator ops platform, 2,000+ creators, 30+ countries</li>
-            <li><span class="name">Trippl</span> — ride-sharing marketplace, team of 7</li>
-            <li><span class="name">Cleo</span> — ML pipelines, millions of transactions</li>
-            <li><span class="name">FentaGone</span> — fentanyl detection, pharmacy app</li>
-            <li><span class="name">CNN from scratch</span> — in Java, no libraries</li>
-            <li><span class="name">Robotic arm</span> — face-tracking, inverse kinematics, C++</li>
-            <li><span class="name">Self-balancing segway</span> — PID control, beat detection</li>
-        </ul>
+        <div class="section">
+            <div class="section-label">Now</div>
+            <ul class="projects">
+                <li>
+                    <span class="name"><a href="https://8x.social">8x Social</a></span>
+                    <div class="meta">UGC creator marketplace — $300K ARR, 2,000+ creators, 30 countries. Fastest growing company in EF history.</div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-label">Previously</div>
+            <ul class="projects">
+                <li>
+                    <span class="name"><a href="https://web.meetcleo.com">Cleo</a></span>
+                    <div class="meta">ML Engineer — youngest hire. 5 squads in 14 months: full-stack → ML. Built notification optimization and transaction categorization at scale.</div>
+                </li>
+                <li>
+                    <span class="name">Trippl</span>
+                    <div class="meta">Co-founder & CTO — ride-sharing marketplace, team of 7, iOS + Android. Two years.</div>
+                </li>
+                <li>
+                    <span class="name">Derivatas</span>
+                    <div class="meta">Data analysis on 10,000+ VC valuations. Built insights on round sizes, timing, and investor preferences — a product line nobody else had.</div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <div class="section-label">Projects</div>
+            <ul class="projects">
+                <li>
+                    <span class="name">Contactless lock</span>
+                    <div class="meta">Every touchpoint in a public bathroom is going contactless — except the lock. Built one.</div>
+                </li>
+                <li>
+                    <span class="name">Pedestrian dynamics robots</span>
+                    <div class="meta">GWU Transportation Lab — simulated crowd behavior using the Social Force Model, then built LIDAR robots to validate it physically.</div>
+                </li>
+                <li>
+                    <span class="name">CNN from scratch</span>
+                    <div class="meta">Java. No libraries.</div>
+                </li>
+                <li>
+                    <span class="name">Robotic arm</span>
+                    <div class="meta">Face-tracking, 5-axis, inverse kinematics. Only tracked my face.</div>
+                </li>
+                <li>
+                    <span class="name">Self-balancing segway</span>
+                    <div class="meta">PID control + beat detection. It danced.</div>
+                </li>
+            </ul>
+        </div>
 
     </main>
 </body>
