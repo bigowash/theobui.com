@@ -7,7 +7,6 @@
     <meta name="description" content="Engineer. French-American, based in San Francisco. CTO at 8x.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
             background: #0c0c0c;
@@ -15,8 +14,6 @@
             line-height: 1.7;
             -webkit-font-smoothing: antialiased;
         }
-
-        /* ── LANDING ── */
         #landing {
             min-height: 100vh;
             display: flex;
@@ -26,148 +23,32 @@
             max-width: 640px;
             margin: 0 auto;
         }
-
-        h1 {
-            font-size: 1.1em;
-            font-weight: 500;
-            color: #e8e8e8;
-            letter-spacing: -0.01em;
-        }
-
-        .sub {
-            color: #555;
-            font-size: 0.82em;
-            margin-top: 4px;
-        }
-
-        .bio {
-            margin-top: 28px;
-            font-size: 0.88em;
-            color: #999;
-            max-width: 440px;
-        }
-
-        .bio a {
-            color: #ccc;
-            text-decoration: none;
-            border-bottom: 1px solid #2a2a2a;
-            transition: border-color 0.2s;
-        }
-
+        h1 { font-size: 1.1em; font-weight: 500; color: #e8e8e8; letter-spacing: -0.01em; }
+        .sub { color: #555; font-size: 0.82em; margin-top: 4px; }
+        .bio { margin-top: 28px; font-size: 0.88em; color: #999; max-width: 440px; }
+        .bio a { color: #ccc; text-decoration: none; border-bottom: 1px solid #2a2a2a; transition: border-color 0.2s; }
         .bio a:hover { border-color: #ccc; }
-
-        .nav {
-            margin-top: 40px;
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .nav a {
-            font-size: 0.85em;
-            color: #555;
-            text-decoration: none;
-            padding: 6px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: color 0.15s;
-            border: none;
-        }
-
+        .nav { margin-top: 40px; display: flex; flex-direction: column; gap: 2px; }
+        .nav a { font-size: 0.85em; color: #555; text-decoration: none; padding: 6px 0; display: flex; align-items: center; gap: 10px; transition: color 0.15s; }
         .nav a:hover { color: #e8e8e8; }
-
-        .nav a .arrow { color: #2e2e2e; transition: color 0.15s; font-size: 0.9em; }
+        .nav a .arrow { color: #2e2e2e; transition: color 0.15s; }
         .nav a:hover .arrow { color: #666; }
-
-        .socials {
-            margin-top: 48px;
-            display: flex;
-            gap: 1.4em;
-            font-size: 0.78em;
-        }
-
-        .socials a {
-            color: #3a3a3a;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
+        .socials { margin-top: 48px; display: flex; gap: 1.4em; font-size: 0.78em; flex-wrap: wrap; }
+        .socials a { color: #3a3a3a; text-decoration: none; transition: color 0.2s; }
         .socials a:hover { color: #888; }
 
-        /* ── SECTIONS ── */
-        .section {
-            display: none;
-            min-height: 100vh;
-            padding: 80px 40px 100px;
-            max-width: 640px;
-            margin: 0 auto;
-        }
-
+        .section { display: none; min-height: 100vh; padding: 80px 40px 100px; max-width: 640px; margin: 0 auto; }
         .section.active { display: block; }
-
-        .back {
-            font-size: 0.78em;
-            color: #444;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 48px;
-            transition: color 0.2s;
-            cursor: pointer;
-            border: none;
-            background: none;
-            padding: 0;
-        }
-
-        .back:hover { color: #999; }
-
-        .section h2 {
-            font-size: 0.95em;
-            font-weight: 500;
-            color: #e8e8e8;
-            margin-bottom: 28px;
-        }
-
-        .items {
-            list-style: none;
-        }
-
-        .items li {
-            padding: 14px 0;
-            border-bottom: 1px solid #141414;
-        }
-
+        .back-btn { font-size: 0.78em; color: #444; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 48px; transition: color 0.2s; cursor: pointer; background: none; border: none; padding: 0; }
+        .back-btn:hover { color: #999; }
+        .section h2 { font-size: 0.95em; font-weight: 500; color: #e8e8e8; margin-bottom: 28px; }
+        .items { list-style: none; }
+        .items li { padding: 14px 0; border-bottom: 1px solid #141414; }
         .items li:last-child { border-bottom: none; }
-
-        .items .name {
-            font-size: 0.9em;
-            color: #ccc;
-        }
-
-        .items .name a {
-            color: #ccc;
-            text-decoration: none;
-            border-bottom: 1px solid #2a2a2a;
-            transition: border-color 0.2s;
-        }
-
+        .items .name a { font-size: 0.9em; color: #ccc; text-decoration: none; border-bottom: 1px solid #2a2a2a; transition: border-color 0.2s; }
         .items .name a:hover { border-color: #ccc; }
-
-        .items .desc {
-            font-size: 0.82em;
-            color: #555;
-            margin-top: 3px;
-            line-height: 1.6;
-        }
-
-        .items .tag {
-            display: inline-block;
-            font-size: 0.7em;
-            color: #3a3a3a;
-            margin-top: 6px;
-        }
+        .items .desc { font-size: 0.82em; color: #555; margin-top: 3px; line-height: 1.6; }
+        .items .tag { display: inline-block; font-size: 0.7em; color: #3a3a3a; margin-top: 6px; }
 
         @media (max-width: 600px) {
             #landing { padding: 0 24px; }
@@ -176,28 +57,15 @@
     </style>
 </head>
 <body>
-
 <div id="landing">
     <h1>Theo Bui</h1>
     <div class="sub">Engineer · San Francisco</div>
-
-    <p class="bio">
-        French-American. CTO & co-founder at <a href="https://8x.social" target="_blank">8x</a>.
-        MEng Design Engineering, Imperial College London.
-    </p>
-
+    <p class="bio">French-American. CTO & co-founder at <a href="https://8x.social" target="_blank">8x</a>. MEng Design Engineering, Imperial College London.</p>
     <nav class="nav">
-        <a href="#" onclick="show('work')">
-            <span class="arrow">→</span> Work
-        </a>
-        <a href="#" onclick="show('projects')">
-            <span class="arrow">→</span> Projects
-        </a>
-        <a href="/portfolio">
-            <span class="arrow">→</span> Portfolio
-        </a>
+        <a href="#" onclick="show('work'); return false;"><span class="arrow">→</span> Work</a>
+        <a href="#" onclick="show('projects'); return false;"><span class="arrow">→</span> Projects</a>
+        <a href="/portfolio"><span class="arrow">→</span> Portfolio</a>
     </nav>
-
     <div class="socials">
         <a href="mailto:theo@8x.social">Email</a>
         <a href="https://x.com/theohbui" target="_blank">X</a>
@@ -206,84 +74,44 @@
     </div>
 </div>
 
-<!-- WORK -->
 <div id="work" class="section">
-    <button class="back" onclick="show('landing')">← back</button>
+    <button class="back-btn" onclick="show('landing')">← back</button>
     <h2>Work</h2>
     <ul class="items">
-        <li>
-            <div class="name"><a href="https://8x.social" target="_blank">8x Social</a></div>
-            <div class="desc">Co-founder & CTO. UGC creator marketplace — ~$1M ARR, 2,000+ creators across 30 countries. Fastest growing company in Entrepreneurs First's history.</div>
-            <div class="tag">2026 — present</div>
-        </li>
-        <li>
-            <div class="name"><a href="https://web.meetcleo.com" target="_blank">Cleo</a></div>
-            <div class="desc">ML Engineer. Youngest hire. Rotated through 5 squads in 14 months — full-stack to machine learning. Built notification optimization and LLM-based transaction categorization at the core of the product.</div>
-            <div class="tag">2024 — 2025</div>
-        </li>
-        <li>
-            <div class="name">Trippl</div>
-            <div class="desc">Co-founder & CTO. Ride-sharing marketplace for safer, shared travel. Team of 7. Built iOS + Android from scratch. Two years.</div>
-            <div class="tag">2023 — 2025</div>
-        </li>
-        <li>
-            <div class="name">Derivatas</div>
-            <div class="desc">Analysed 10,000+ VC valuations to surface patterns in round sizes, timing, and investor preferences. A dataset nobody else had access to.</div>
-            <div class="tag">2021 — 2022</div>
-        </li>
-        <li>
-            <div class="name">GWU Transportation Lab</div>
-            <div class="desc">Modelled pedestrian crowd dynamics using the Social Force Model. Simulated agents in a virtual environment, then built physical robots with LIDAR sensors to validate the results. They matched.</div>
-            <div class="tag">2018</div>
-        </li>
+        <li><div class="name"><a href="/work/8x.html">8x Social</a></div><div class="desc">Co-founder & CTO. UGC creator marketplace — ~$1M ARR, 2,000+ creators, 30 countries. Fastest growing in EF history.</div><div class="tag">2026 — present</div></li>
+        <li><div class="name"><a href="/work/cleo.html">Cleo</a></div><div class="desc">ML Engineer. Youngest hire. 5 squads in 14 months — full-stack to machine learning.</div><div class="tag">2024 — 2025</div></li>
+        <li><div class="name"><a href="/work/trippl.html">Trippl</a></div><div class="desc">Co-founder & CTO. Ride-sharing marketplace, team of 7, iOS + Android. Two years.</div><div class="tag">2023 — 2025</div></li>
+        <li><div class="name"><a href="/work/derivatas.html">Derivatas</a></div><div class="desc">Analysed 10,000+ VC valuations to surface patterns nobody else had access to.</div><div class="tag">2021 — 2022</div></li>
+        <li><div class="name"><a href="/work/gwu.html">GWU Transportation Lab</a></div><div class="desc">Built robots to model pedestrian crowd dynamics. Validated simulations in the physical world.</div><div class="tag">2018</div></li>
     </ul>
 </div>
 
-<!-- PROJECTS -->
 <div id="projects" class="section">
-    <button class="back" onclick="show('landing')">← back</button>
+    <button class="back-btn" onclick="show('landing')">← back</button>
     <h2>Projects</h2>
     <ul class="items">
-        <li>
-            <div class="name">Contactless lock</div>
-            <div class="desc">Every touchpoint in a public bathroom is going contactless — taps, flushes, hand dryers. Except the lock. Built one.</div>
-        </li>
-        <li>
-            <div class="name">Robotic arm</div>
-            <div class="desc">5-axis face-tracking arm built from 3mm plywood. ESP32 camera for facial detection, servo + stepper motors for movement, inverse kinematics. It only tracked my face.</div>
-        </li>
-        <li>
-            <div class="name">Self-balancing segway</div>
-            <div class="desc">PID control. Beat detection. It danced.</div>
-        </li>
-        <li>
-            <div class="name">CNN from scratch</div>
-            <div class="desc">Convolutional neural network rebuilt from fundamentals in Java. No external libraries. Trained on MNIST.</div>
-        </li>
-        <li>
-            <div class="name">Chess engine</div>
-            <div class="desc">Object-oriented chess in Python. Built during COVID — first proper introduction to software architecture.</div>
-        </li>
-        <li>
-            <div class="name">Sudoku solver</div>
-            <div class="desc">Constraint propagation + backtracking. Solves any valid puzzle.</div>
-        </li>
+        <li><div class="name"><a href="/projects/mcp-agent-mail.html">MCP Agent Mail</a></div><div class="desc">Gmail for your coding agents. Coordination layer for multi-agent systems.</div></li>
+        <li><div class="name"><a href="/projects/contactless-lock.html">Contactless lock</a></div><div class="desc">Every touchpoint in a public bathroom is going contactless — except the lock. Built one.</div></li>
+        <li><div class="name"><a href="/projects/robotic-arm.html">Robotic arm</a></div><div class="desc">5-axis face-tracking arm from plywood. Only tracked my face.</div></li>
+        <li><div class="name"><a href="/projects/segway.html">Self-balancing segway</a></div><div class="desc">PID control. Beat detection. It danced.</div></li>
+        <li><div class="name"><a href="/projects/cnn.html">CNN from scratch</a></div><div class="desc">Convolutional neural network in Java. No libraries. Trained on MNIST.</div></li>
+        <li><div class="name"><a href="/projects/chess.html">Chess engine</a></div><div class="desc">Object-oriented chess in Python. Built during COVID.</div></li>
+        <li><div class="name"><a href="/projects/sudoku.html">Sudoku solver</a></div><div class="desc">Solves any puzzle. Shows every logical step.</div></li>
+        <li><div class="name"><a href="/projects/privately-promoted.html">PrivatelyPromoted</a></div><div class="desc">Targeted advertising without any data leaving your device.</div></li>
     </ul>
 </div>
 
 <script>
-    function show(id) {
-        document.getElementById('landing').style.display = 'none';
-        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-        if (id === 'landing') {
-            document.getElementById('landing').style.display = 'flex';
-        } else {
-            document.getElementById(id).classList.add('active');
-        }
-        window.scrollTo(0, 0);
-        return false;
+function show(id) {
+    document.getElementById('landing').style.display = 'none';
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    if (id === 'landing') {
+        document.getElementById('landing').style.display = 'flex';
+    } else {
+        document.getElementById(id).classList.add('active');
     }
+    window.scrollTo(0, 0);
+}
 </script>
-
 </body>
 </html>

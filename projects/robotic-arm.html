@@ -1,0 +1,14 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Robotic Arm — Theo Bui</title><style>* { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif; background: #0c0c0c; color: #b8b8b8; line-height: 1.75; padding: 0 24px; -webkit-font-smoothing: antialiased; } main { max-width: 580px; margin: 0 auto; padding: 80px 0 120px; } .back { font-size: 0.78em; color: #444; text-decoration: none; display: inline-block; margin-bottom: 48px; transition: color 0.2s; } .back:hover { color: #999; } .tag { font-size: 0.72em; color: #444; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; } h1 { font-size: 1.1em; font-weight: 500; color: #e8e8e8; margin-bottom: 6px; } .sub { font-size: 0.82em; color: #555; margin-bottom: 32px; } p { font-size: 0.88em; color: #999; margin-bottom: 16px; } h2 { font-size: 0.82em; font-weight: 500; color: #555; text-transform: uppercase; letter-spacing: 0.07em; margin: 36px 0 12px; } .link-out { display: inline-block; margin-top: 28px; font-size: 0.82em; color: #555; text-decoration: none; transition: color 0.2s; } .link-out:hover { color: #ccc; }</style></head>
+<body><main>
+<a class="back" href="/">← Theo Bui</a>
+<div class="tag">Imperial College · GIZMO Module</div>
+<h1>Face-Tracking Robotic Arm</h1>
+<div class="sub">5-axis · Lasercut plywood · ESP32 · C++</div>
+<p>Built for Imperial's physical computing module — the brief was to create a human-interactive robot from 3mm plywood. I built a 5-axis robotic arm that tracks faces using computer vision and an ESP32 camera.</p>
+<h2>The interaction</h2>
+<p>The arm detects faces in real time and moves to track them using servo and stepper motors. It only tracks my face — nobody else's. It can also be controlled fully by infrared remote.</p>
+<h2>Construction</h2>
+<p>Started with CAD, then lasercutting. Iterated many times: added supports and counterweights to prevent tipping, redesigned the servo mounts to halve plywood usage, added ports for direct board connection without disassembly.</p>
+<a class="link-out" href="https://youtu.be/CfiG-eKf2Ww" target="_blank">Watch on YouTube →</a>
+<br><a class="link-out" href="https://github.com/bigowash/Face-Tracking-Robotic-Arm" target="_blank">GitHub →</a>
+</main></body></html>
