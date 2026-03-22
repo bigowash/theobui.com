@@ -15,6 +15,7 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
         }
         header {
             padding: 20px 28px;
@@ -22,6 +23,7 @@
             align-items: center;
             gap: 16px;
             border-bottom: 1px solid #1a1a1a;
+            flex-shrink: 0;
         }
         header a {
             color: #555;
@@ -32,7 +34,18 @@
         header a:hover { color: #e8e8e8; }
         header span { color: #2e2e2e; font-size: 0.82em; }
         header .title { color: #888; font-size: 0.82em; }
-        iframe { flex: 1; width: 100%; border: none; background: #fff; }
+        .pdf-container {
+            flex: 1;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            min-height: calc(100vh - 61px);
+            border: none;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -41,6 +54,8 @@
         <span>/</span>
         <span class="title">Portfolio</span>
     </header>
-    <iframe src="/portfolio.pdf" title="Theo Bui Portfolio"></iframe>
+    <div class="pdf-container">
+        <iframe src="/portfolio.pdf#view=FitH" title="Theo Bui Portfolio"></iframe>
+    </div>
 </body>
 </html>
