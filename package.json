@@ -1,0 +1,22 @@
+{
+  "name": "theobui.com",
+  "version": "1.0.0",
+  "description": "Theo Bui's personal website with portfolio and project showcase",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigowash/theobui.com.git"
+  },
+  "keywords": [
+    "portfolio",
+    "personal-website"
+  ],
+  "author": "Theo Bui",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bigowash/theobui.com/issues"
+  },
+  "homepage": "https://github.com/bigowash/theobui.com#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
