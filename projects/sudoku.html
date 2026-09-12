@@ -1,4 +1,19 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Sudoku Solver — Theo Bui</title><style>* { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif; background: #0c0c0c; color: #b8b8b8; line-height: 1.75; padding: 0 24px; -webkit-font-smoothing: antialiased; } main { max-width: 580px; margin: 0 auto; padding: 80px 0 120px; } .back { font-size: 0.78em; color: #444; text-decoration: none; display: inline-block; margin-bottom: 48px; transition: color 0.2s; } .back:hover { color: #999; } .tag { font-size: 0.72em; color: #444; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; } h1 { font-size: 1.1em; font-weight: 500; color: #e8e8e8; margin-bottom: 6px; } .sub { font-size: 0.82em; color: #555; margin-bottom: 32px; } p { font-size: 0.88em; color: #999; margin-bottom: 16px; } .link-out { display: inline-block; margin-top: 28px; font-size: 0.82em; color: #555; text-decoration: none; transition: color 0.2s; } .link-out:hover { color: #ccc; }</style></head>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Sudoku Solver — Step-by-Step Web App — Theo Bui</title>
+<meta name="description" content="A web-based Sudoku solver by Theo Bui that works like a human — constraint propagation, naked and hidden pairs, then backtracking — showing every step.">
+<link rel="canonical" href="https://www.theobui.com/projects/sudoku">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.theobui.com/projects/sudoku">
+<meta property="og:title" content="Sudoku Solver — Step-by-Step Web App — Theo Bui">
+<meta property="og:description" content="A web-based Sudoku solver by Theo Bui that works like a human — constraint propagation, naked and hidden pairs, then backtracking — showing every step.">
+<meta property="og:image" content="https://www.theobui.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Theo Bui">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sudoku Solver — Step-by-Step Web App — Theo Bui">
+<meta name="twitter:description" content="A web-based Sudoku solver by Theo Bui that works like a human — constraint propagation, naked and hidden pairs, then backtracking — showing every step.">
+<meta name="twitter:image" content="https://www.theobui.com/og-image.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "https://www.theobui.com/#person", "name": "Theo Bui", "url": "https://www.theobui.com/", "jobTitle": "CTO & Co-founder", "worksFor": {"@type": "Organization", "name": "8x", "url": "https://8x.social"}, "alumniOf": {"@type": "CollegeOrUniversity", "name": "Imperial College London"}, "address": {"@type": "PostalAddress", "addressLocality": "San Francisco", "addressRegion": "CA", "addressCountry": "US"}, "email": "mailto:theo@8x.social", "sameAs": ["https://www.linkedin.com/in/theo-bui/", "https://github.com/bigowash"]}</script><style>* { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: -apple-system, BlinkMacSystemFont, "Inter", sans-serif; background: #0c0c0c; color: #b8b8b8; line-height: 1.75; padding: 0 24px; -webkit-font-smoothing: antialiased; } main { max-width: 580px; margin: 0 auto; padding: 80px 0 120px; } .back { font-size: 0.78em; color: #444; text-decoration: none; display: inline-block; margin-bottom: 48px; transition: color 0.2s; } .back:hover { color: #999; } .tag { font-size: 0.72em; color: #444; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; } h1 { font-size: 1.1em; font-weight: 500; color: #e8e8e8; margin-bottom: 6px; } .sub { font-size: 0.82em; color: #555; margin-bottom: 32px; } p { font-size: 0.88em; color: #999; margin-bottom: 16px; } .link-out { display: inline-block; margin-top: 28px; font-size: 0.82em; color: #555; text-decoration: none; transition: color 0.2s; } .link-out:hover { color: #ccc; }</style></head>
 <body><main>
 <a class="back" href="/">← Theo Bui</a>
 <div class="tag">Project</div>
@@ -8,20 +23,20 @@
 <p>Built as a web app so you can input any puzzle and watch it solve step by step.</p>
 <div style="margin-top:32px;">
   <p style="font-size:0.75em;color:#444;margin-bottom:6px;margin-top:20px;text-transform:uppercase;letter-spacing:0.06em;">Home Screen</p>
-  <img src="/media/sudoku/slide-1.png" style="width:100%;display:block;border-radius:4px;margin-bottom:4px;" loading="lazy">
+  <img width="1270" height="899" src="/media/sudoku/slide-1.png" style="width:100%;height:auto;display:block;border-radius:4px;margin-bottom:4px;">
   <p style="font-size:0.75em;color:#444;margin-bottom:6px;margin-top:20px;text-transform:uppercase;letter-spacing:0.06em;">Start Game</p>
-  <img src="/media/sudoku/slide-2.png" style="width:100%;display:block;border-radius:4px;margin-bottom:4px;" loading="lazy">
+  <img width="1043" height="891" src="/media/sudoku/slide-2.png" style="width:100%;height:auto;display:block;border-radius:4px;margin-bottom:4px;" loading="lazy">
   <p style="font-size:0.75em;color:#444;margin-bottom:6px;margin-top:20px;text-transform:uppercase;letter-spacing:0.06em;">Show Options</p>
-  <img src="/media/sudoku/slide-3.png" style="width:100%;display:block;border-radius:4px;margin-bottom:4px;" loading="lazy">
+  <img width="1040" height="874" src="/media/sudoku/slide-3.png" style="width:100%;height:auto;display:block;border-radius:4px;margin-bottom:4px;" loading="lazy">
   <p style="font-size:0.75em;color:#444;margin-bottom:6px;margin-top:20px;text-transform:uppercase;letter-spacing:0.06em;">Single Option</p>
-  <img src="/media/sudoku/slide-4.png" style="width:100%;display:block;border-radius:4px;margin-bottom:4px;" loading="lazy">
+  <img width="1030" height="879" src="/media/sudoku/slide-4.png" style="width:100%;height:auto;display:block;border-radius:4px;margin-bottom:4px;" loading="lazy">
   <p style="font-size:0.75em;color:#444;margin-bottom:6px;margin-top:20px;text-transform:uppercase;letter-spacing:0.06em;">Naked and Hidden Pairs</p>
-  <img src="/media/sudoku/slide-5.png" style="width:100%;display:block;border-radius:4px;margin-bottom:4px;" loading="lazy">
+  <img width="989" height="881" src="/media/sudoku/slide-5.png" style="width:100%;height:auto;display:block;border-radius:4px;margin-bottom:4px;" loading="lazy">
   <p style="font-size:0.75em;color:#444;margin-bottom:6px;margin-top:20px;text-transform:uppercase;letter-spacing:0.06em;">Remove From Line</p>
-  <img src="/media/sudoku/slide-6.png" style="width:100%;display:block;border-radius:4px;margin-bottom:4px;" loading="lazy">
+  <img width="949" height="864" src="/media/sudoku/slide-6.png" style="width:100%;height:auto;display:block;border-radius:4px;margin-bottom:4px;" loading="lazy">
   <p style="font-size:0.75em;color:#444;margin-bottom:6px;margin-top:20px;text-transform:uppercase;letter-spacing:0.06em;">Single Option</p>
-  <img src="/media/sudoku/slide-7.png" style="width:100%;display:block;border-radius:4px;margin-bottom:4px;" loading="lazy">
+  <img width="984" height="863" src="/media/sudoku/slide-7.png" style="width:100%;height:auto;display:block;border-radius:4px;margin-bottom:4px;" loading="lazy">
   <p style="font-size:0.75em;color:#444;margin-bottom:6px;margin-top:20px;text-transform:uppercase;letter-spacing:0.06em;">End Result</p>
-  <img src="/media/sudoku/slide-8.png" style="width:100%;display:block;border-radius:4px;margin-bottom:4px;" loading="lazy">
+  <img width="972" height="867" src="/media/sudoku/slide-8.png" style="width:100%;height:auto;display:block;border-radius:4px;margin-bottom:4px;" loading="lazy">
 </div>
 </main></body></html>
