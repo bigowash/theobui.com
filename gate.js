@@ -21,23 +21,23 @@
         'html.tb-gated { overflow: hidden; }' +
         '@keyframes tb-in { from { opacity: 0; } to { opacity: 1; } }' +
         '#tb-gate { position: fixed; inset: 0; z-index: 9999; overflow-y: auto; background: #0c0c0c; color: #b8b8b8; line-height: 1.7; font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; animation: tb-in 0.3s ease; }' +
-        '#tb-gate form { min-height: 100%; max-width: 640px; margin: 0 auto; padding: 80px 40px; display: flex; flex-direction: column; justify-content: center; }' +
+        '#tb-gate form { min-height: 100%; max-width: 640px; margin: 0 auto; padding: 80px 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }' +
         '#tb-gate h1 { font-size: 1.1em; font-weight: 500; color: #e8e8e8; letter-spacing: -0.01em; margin: 0; }' +
         '#tb-gate .sub { color: #555; font-size: 0.82em; margin-top: 4px; }' +
         '#tb-gate .bio { margin-top: 28px; font-size: 0.88em; color: #999; max-width: 440px; }' +
-        '#tb-gate .fields { margin-top: 32px; max-width: 440px; }' +
-        '#tb-gate input[type=text], #tb-gate input[type=email] { display: block; width: 100%; background: none; border: 0; border-bottom: 1px solid #1e1e1e; border-radius: 0; color: #e8e8e8; font: inherit; font-size: 0.88em; padding: 10px 0; outline: none; transition: border-color 0.2s; }' +
+        '#tb-gate .fields { margin-top: 32px; width: 100%; max-width: 440px; }' +
+        '#tb-gate input[type=text], #tb-gate input[type=email] { display: block; width: 100%; background: none; border: 0; border-bottom: 1px solid #1e1e1e; border-radius: 0; color: #e8e8e8; font: inherit; font-size: 0.88em; padding: 10px 0; text-align: center; outline: none; transition: border-color 0.2s; }' +
         '#tb-gate input::placeholder { color: #444; }' +
         '#tb-gate input[type=text]:focus, #tb-gate input[type=email]:focus { border-color: #555; }' +
-        '#tb-gate .q { font-size: 0.78em; color: #555; margin: 28px 0 8px; }' +
-        '#tb-gate .who { display: flex; flex-wrap: wrap; gap: 4px 1.4em; }' +
+        '#tb-gate .q { font-size: 0.78em; color: #555; margin: 28px 0 12px; }' +
+        '#tb-gate .who { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }' +
         '#tb-gate .who input { position: absolute; opacity: 0; pointer-events: none; }' +
-        '#tb-gate .who span { font-size: 0.82em; color: #666; cursor: pointer; border-bottom: 1px solid transparent; transition: color 0.15s, border-color 0.15s; }' +
-        '#tb-gate .who span:hover { color: #999; }' +
-        '#tb-gate .who input:checked + span { color: #e8e8e8; border-color: #ccc; }' +
+        '#tb-gate .who span { display: inline-block; font-size: 0.8em; color: #666; cursor: pointer; padding: 4px 14px; border: 1px solid #1e1e1e; border-radius: 999px; transition: color 0.15s, border-color 0.15s, background 0.15s; }' +
+        '#tb-gate .who span:hover { color: #999; border-color: #333; }' +
+        '#tb-gate .who input:checked + span { color: #e8e8e8; border-color: #666; background: #161616; }' +
         '#tb-gate .who input:focus-visible + span { color: #e8e8e8; }' +
         '#tb-gate .hp { position: absolute; left: -9999px; }' +
-        '#tb-gate button { margin-top: 36px; align-self: flex-start; background: none; border: 0; padding: 6px 0; font: inherit; font-size: 0.85em; color: #999; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; transition: color 0.15s; }' +
+        '#tb-gate button { margin-top: 36px; background: none; border: 0; padding: 6px 0; font: inherit; font-size: 0.85em; color: #999; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; transition: color 0.15s; }' +
         '#tb-gate button .arrow { color: #444; transition: color 0.15s; }' +
         '#tb-gate button:hover { color: #e8e8e8; }' +
         '#tb-gate button:hover .arrow { color: #888; }' +
@@ -45,7 +45,7 @@
         '@media (max-width: 600px) { #tb-gate form { padding: 60px 24px; } }';
     document.head.appendChild(css);
 
-    var WHO = ['Investor', 'Founder', 'Recruiter / hiring', 'Engineer', 'Brand / potential customer', 'Creator', 'Student', 'Friend', 'Other'];
+    var WHO = ['Investor', 'Founder', 'Recruiter', 'Engineer', 'Brand', 'Creator', 'Student', 'Friend', 'Other'];
 
     function mount() {
         var gate = document.createElement('div');
