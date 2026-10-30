@@ -2,6 +2,9 @@
 // Every submission is logged (Vercel runtime logs) and, when SLACK_WEBHOOK_URL
 // is set, posted to Slack so Theo hears about each visitor.
 
+// Theo's Slack user ID, tagged on every alert so it notifies him.
+var THEO_SLACK_ID = 'U09RTC8B0RW';
+
 function clean(value, max) {
     return String(value || '').replace(/[\r\n\t]+/g, ' ').trim().slice(0, max || 200);
 }
@@ -52,7 +55,7 @@ module.exports = async function handler(req, res) {
     if (webhook) {
         var where = esc([lead.city, lead.region, lead.country].filter(Boolean).join(', '));
         var lines = [
-            '*New theobui.com visitor:* ' + esc(lead.name) + ' (' + esc(lead.email) + ')',
+            '<@' + THEO_SLACK_ID + '> *New theobui.com visitor:* ' + esc(lead.name) + ' (' + esc(lead.email) + ')',
             '*Who:* ' + esc(lead.who) + (lead.company ? ' — ' + esc(lead.company) : ''),
             '*Landed on:* ' + esc(lead.page || '/') + (lead.query ? ' ' + esc(lead.query) : ''),
             '*From:* ' + esc(lead.referrer || 'direct / unknown'),

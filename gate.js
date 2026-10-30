@@ -5,8 +5,13 @@
     var KEY = 'tb-gate-v1';
     var BOT = /bot|crawl|spider|slurp|facebookexternalhit|embedly|preview|whatsapp|telegram|discord|lighthouse|headless|google-inspectiontool|gptbot|perplexity|claude|chatgpt/i;
 
-    try { if (localStorage.getItem(KEY)) return; } catch (e) { return; }
-    if (BOT.test(navigator.userAgent)) return;
+    // ?gate forces the gate to show again, even after this browser submitted it.
+    var force = /[?&]gate\b/.test(location.search);
+    try {
+        if (force) localStorage.removeItem(KEY);
+        else if (localStorage.getItem(KEY)) return;
+    } catch (e) { return; }
+    if (!force && BOT.test(navigator.userAgent)) return;
 
     var root = document.documentElement;
     root.classList.add('tb-gated');
