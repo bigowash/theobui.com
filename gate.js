@@ -1,6 +1,6 @@
 // Visitor gate: asks for name, email and who they are before showing the site.
 // Crawlers and link-preview bots skip it, so pages still index and unfurl.
-// The page content stays in the HTML; the gate only blurs it until submitted.
+// The page content stays in the HTML; the gate only covers it until submitted.
 (function () {
     var KEY = 'tb-gate-v1';
     var BOT = /bot|crawl|spider|slurp|facebookexternalhit|embedly|preview|whatsapp|telegram|discord|lighthouse|headless|google-inspectiontool|gptbot|perplexity|claude|chatgpt/i;
@@ -19,56 +19,62 @@
     var css = document.createElement('style');
     css.textContent =
         'html.tb-gated { overflow: hidden; }' +
-        'html.tb-gated body > *:not(#tb-gate) { filter: blur(10px); pointer-events: none; user-select: none; }' +
-        '#tb-gate { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(12,12,12,0.72); font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; }' +
-        '#tb-gate form { width: 100%; max-width: 360px; background: #0c0c0c; border: 1px solid #1c1c1c; border-radius: 10px; padding: 32px 28px; }' +
-        '#tb-gate h2 { font-size: 1.05em; font-weight: 500; color: #e8e8e8; letter-spacing: -0.01em; }' +
-        '#tb-gate p { font-size: 0.8em; color: #555; margin: 6px 0 24px; line-height: 1.6; }' +
-        '#tb-gate label { display: block; font-size: 0.72em; color: #555; margin: 14px 0 6px; }' +
-        '#tb-gate input, #tb-gate select { width: 100%; background: #111; border: 1px solid #222; border-radius: 6px; color: #e8e8e8; font: inherit; font-size: 0.88em; padding: 10px 12px; outline: none; transition: border-color 0.15s; }' +
-        '#tb-gate select { appearance: none; -webkit-appearance: none; }' +
-        '#tb-gate input:focus, #tb-gate select:focus { border-color: #555; }' +
+        '@keyframes tb-in { from { opacity: 0; } to { opacity: 1; } }' +
+        '#tb-gate { position: fixed; inset: 0; z-index: 9999; overflow-y: auto; background: #0c0c0c; color: #b8b8b8; line-height: 1.7; font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; -webkit-font-smoothing: antialiased; animation: tb-in 0.3s ease; }' +
+        '#tb-gate form { min-height: 100%; max-width: 640px; margin: 0 auto; padding: 80px 40px; display: flex; flex-direction: column; justify-content: center; }' +
+        '#tb-gate h1 { font-size: 1.1em; font-weight: 500; color: #e8e8e8; letter-spacing: -0.01em; margin: 0; }' +
+        '#tb-gate .sub { color: #555; font-size: 0.82em; margin-top: 4px; }' +
+        '#tb-gate .bio { margin-top: 28px; font-size: 0.88em; color: #999; max-width: 440px; }' +
+        '#tb-gate .fields { margin-top: 32px; max-width: 440px; }' +
+        '#tb-gate input[type=text], #tb-gate input[type=email] { display: block; width: 100%; background: none; border: 0; border-bottom: 1px solid #1e1e1e; border-radius: 0; color: #e8e8e8; font: inherit; font-size: 0.88em; padding: 10px 0; outline: none; transition: border-color 0.2s; }' +
+        '#tb-gate input::placeholder { color: #444; }' +
+        '#tb-gate input[type=text]:focus, #tb-gate input[type=email]:focus { border-color: #555; }' +
+        '#tb-gate .q { font-size: 0.78em; color: #555; margin: 28px 0 8px; }' +
+        '#tb-gate .who { display: flex; flex-wrap: wrap; gap: 4px 1.4em; }' +
+        '#tb-gate .who input { position: absolute; opacity: 0; pointer-events: none; }' +
+        '#tb-gate .who span { font-size: 0.82em; color: #666; cursor: pointer; border-bottom: 1px solid transparent; transition: color 0.15s, border-color 0.15s; }' +
+        '#tb-gate .who span:hover { color: #999; }' +
+        '#tb-gate .who input:checked + span { color: #e8e8e8; border-color: #ccc; }' +
+        '#tb-gate .who input:focus-visible + span { color: #e8e8e8; }' +
         '#tb-gate .hp { position: absolute; left: -9999px; }' +
-        '#tb-gate button { width: 100%; margin-top: 24px; background: #e8e8e8; color: #0c0c0c; border: 0; border-radius: 6px; font: inherit; font-size: 0.85em; font-weight: 500; padding: 11px; cursor: pointer; transition: opacity 0.15s; }' +
-        '#tb-gate button:hover { opacity: 0.85; }' +
-        '#tb-gate .err { color: #c66; font-size: 0.75em; margin-top: 10px; min-height: 1em; }';
+        '#tb-gate button { margin-top: 36px; align-self: flex-start; background: none; border: 0; padding: 6px 0; font: inherit; font-size: 0.85em; color: #999; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; transition: color 0.15s; }' +
+        '#tb-gate button .arrow { color: #444; transition: color 0.15s; }' +
+        '#tb-gate button:hover { color: #e8e8e8; }' +
+        '#tb-gate button:hover .arrow { color: #888; }' +
+        '#tb-gate .err { color: #a66; font-size: 0.75em; margin-top: 6px; min-height: 1.2em; }' +
+        '@media (max-width: 600px) { #tb-gate form { padding: 60px 24px; } }';
     document.head.appendChild(css);
+
+    var WHO = ['Investor', 'Founder', 'Recruiter / hiring', 'Engineer', 'Brand / potential customer', 'Creator', 'Student', 'Friend', 'Other'];
 
     function mount() {
         var gate = document.createElement('div');
         gate.id = 'tb-gate';
         gate.innerHTML =
             '<form novalidate>' +
-                '<h2>Theo Bui</h2>' +
-                '<p>Quick intro before you look around.</p>' +
-                '<label for="tb-name">Name</label>' +
-                '<input id="tb-name" name="name" autocomplete="name" required>' +
-                '<label for="tb-email">Email</label>' +
-                '<input id="tb-email" name="email" type="email" autocomplete="email" required>' +
-                '<label for="tb-who">Who are you?</label>' +
-                '<select id="tb-who" name="who" required>' +
-                    '<option value="" disabled selected>Pick one</option>' +
-                    '<option>Investor</option>' +
-                    '<option>Founder</option>' +
-                    '<option>Recruiter / hiring</option>' +
-                    '<option>Engineer</option>' +
-                    '<option>Brand / potential customer</option>' +
-                    '<option>Creator</option>' +
-                    '<option>Student</option>' +
-                    '<option>Friend</option>' +
-                    '<option>Other</option>' +
-                '</select>' +
-                '<label for="tb-company">Company / what brings you here <span style="color:#333">(optional)</span></label>' +
-                '<input id="tb-company" name="company" autocomplete="organization">' +
+                '<h1>Theo Bui</h1>' +
+                '<div class="sub">Engineer · San Francisco</div>' +
+                '<p class="bio">Before you look around, tell me who you are.</p>' +
+                '<div class="fields">' +
+                    '<input type="text" name="name" placeholder="Name" autocomplete="name" aria-label="Name">' +
+                    '<input type="email" name="email" placeholder="Email" autocomplete="email" aria-label="Email">' +
+                    '<div class="q" id="tb-who-label">I\'m a…</div>' +
+                    '<div class="who" role="radiogroup" aria-labelledby="tb-who-label">' +
+                        WHO.map(function (w) {
+                            return '<label><input type="radio" name="who" value="' + w + '"><span>' + w.toLowerCase() + '</span></label>';
+                        }).join('') +
+                    '</div>' +
+                    '<input type="text" name="company" placeholder="Company, or what brings you here (optional)" autocomplete="organization" aria-label="Company, or what brings you here" style="margin-top: 20px">' +
+                '</div>' +
                 '<input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">' +
-                '<button type="submit">Continue</button>' +
+                '<button type="submit"><span class="arrow">→</span> Continue</button>' +
                 '<div class="err" role="alert"></div>' +
             '</form>';
         document.body.appendChild(gate);
 
         var form = gate.querySelector('form');
         var err = gate.querySelector('.err');
-        form.querySelector('#tb-name').focus();
+        form.elements.namedItem('name').focus();
 
         form.addEventListener('submit', function (e) {
             e.preventDefault();
