@@ -25,23 +25,23 @@
         '#tb-gate h1 { font-size: 1.1em; font-weight: 500; color: #e8e8e8; letter-spacing: -0.01em; margin: 0; }' +
         '#tb-gate .sub { color: #555; font-size: 0.82em; margin-top: 4px; }' +
         '#tb-gate .bio { margin-top: 28px; font-size: 0.88em; color: #999; max-width: 440px; }' +
-        '#tb-gate .fields { margin-top: 32px; width: 100%; max-width: 440px; }' +
-        '#tb-gate input[type=text], #tb-gate input[type=email] { display: block; width: 100%; background: none; border: 0; border-bottom: 1px solid #1e1e1e; border-radius: 0; color: #e8e8e8; font: inherit; font-size: 0.88em; padding: 10px 0; text-align: center; outline: none; transition: border-color 0.2s; }' +
-        '#tb-gate input::placeholder { color: #444; }' +
-        '#tb-gate input[type=text]:focus, #tb-gate input[type=email]:focus { border-color: #555; }' +
-        '#tb-gate .q { font-size: 0.78em; color: #555; margin: 28px 0 12px; }' +
-        '#tb-gate .who { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }' +
+        '#tb-gate .fields { margin-top: 32px; width: 100%; max-width: 360px; display: flex; flex-direction: column; gap: 10px; }' +
+        '#tb-gate input[type=text], #tb-gate input[type=email] { display: block; width: 100%; background: #121212; border: 1px solid #222; border-radius: 10px; color: #e8e8e8; font: inherit; font-size: 0.85em; padding: 11px 14px; text-align: left; outline: none; transition: border-color 0.15s, background 0.15s; }' +
+        '#tb-gate input::placeholder { color: #555; }' +
+        '#tb-gate input[type=text]:focus, #tb-gate input[type=email]:focus { border-color: #555; background: #151515; }' +
+        '#tb-gate .q { font-size: 0.78em; color: #666; margin: 14px 0 0; text-align: left; }' +
+        '#tb-gate .who { display: flex; flex-wrap: wrap; gap: 6px; }' +
         '#tb-gate .who input { position: absolute; opacity: 0; pointer-events: none; }' +
-        '#tb-gate .who span { display: inline-block; font-size: 0.8em; color: #666; cursor: pointer; padding: 4px 14px; border: 1px solid #1e1e1e; border-radius: 999px; transition: color 0.15s, border-color 0.15s, background 0.15s; }' +
+        '#tb-gate .who span { display: inline-block; font-size: 0.78em; color: #777; cursor: pointer; padding: 5px 12px; border: 1px solid #222; border-radius: 999px; transition: color 0.15s, border-color 0.15s, background 0.15s; }' +
         '#tb-gate .who span:hover { color: #999; border-color: #333; }' +
-        '#tb-gate .who input:checked + span { color: #e8e8e8; border-color: #666; background: #161616; }' +
-        '#tb-gate .who input:focus-visible + span { color: #e8e8e8; }' +
+        '#tb-gate .who input:checked + span { color: #0c0c0c; border-color: #e8e8e8; background: #e8e8e8; }' +
+        '#tb-gate .who input:focus-visible + span { outline: 1px solid #666; outline-offset: 2px; }' +
         '#tb-gate .hp { position: absolute; left: -9999px; }' +
-        '#tb-gate button { margin-top: 36px; background: none; border: 0; padding: 6px 0; font: inherit; font-size: 0.85em; color: #999; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; transition: color 0.15s; }' +
-        '#tb-gate button .arrow { color: #444; transition: color 0.15s; }' +
-        '#tb-gate button:hover { color: #e8e8e8; }' +
-        '#tb-gate button:hover .arrow { color: #888; }' +
-        '#tb-gate .err { color: #a66; font-size: 0.75em; margin-top: 6px; min-height: 1.2em; }' +
+        '#tb-gate button { margin-top: 18px; width: 100%; background: #e8e8e8; border: 0; border-radius: 10px; padding: 11px 14px; font: inherit; font-size: 0.85em; font-weight: 500; color: #0c0c0c; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: opacity 0.15s; }' +
+
+        '#tb-gate button:hover { opacity: 0.88; }' +
+
+        '#tb-gate .err { color: #c77; font-size: 0.75em; min-height: 1.2em; text-align: left; }' +
         '@media (max-width: 600px) { #tb-gate form { padding: 60px 24px; } }';
     document.head.appendChild(css);
 
@@ -64,11 +64,11 @@
                             return '<label><input type="radio" name="who" value="' + w + '"><span>' + w.toLowerCase() + '</span></label>';
                         }).join('') +
                     '</div>' +
-                    '<input type="text" name="company" placeholder="Company, or what brings you here (optional)" autocomplete="organization" aria-label="Company, or what brings you here" style="margin-top: 20px">' +
+                    '<input type="text" name="company" placeholder="Company, or what brings you here (optional)" autocomplete="organization" aria-label="Company, or what brings you here" style="margin-top: 6px">' +
+                    '<button type="submit">Continue →</button>' +
+                    '<div class="err" role="alert"></div>' +
                 '</div>' +
                 '<input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">' +
-                '<button type="submit"><span class="arrow">→</span> Continue</button>' +
-                '<div class="err" role="alert"></div>' +
             '</form>';
         document.body.appendChild(gate);
 
